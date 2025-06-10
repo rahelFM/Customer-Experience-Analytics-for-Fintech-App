@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import os
 
 # Parameters (from you)
-file_path = "C:\\Users\\Rahel\\Desktop\\KAIM 5&6\\Week2\\Customer-Experience-Analytics-for-Fintech-App\\data\\sentiment\\sentiment_analysis_distilbert.csv"
+file_path = "C:\\Users\\Rahel\\Desktop\\KAIM 5&6\\Week2\\Customer-Experience-Analytics-for-Fintech-App\\data\\sentiment\\sentiment_textblob_vader.csv"
 review_col = "clean_review"
 sentiment_label_col = "sentiment_label"
 sentiment_score_col = "sentiment_score"
@@ -74,7 +74,7 @@ df['identified_themes'] = df['processed_review'].apply(assign_themes)
 # Save results with themes
 output_dir = os.path.join(os.path.dirname(file_path), "thematic_analysis")
 os.makedirs(output_dir, exist_ok=True)
-output_path = os.path.join(output_dir, "distilbert_reviews_with_themes.csv")
+output_path = os.path.join(output_dir, "textblob_vader.csv")
 
 df.to_csv(output_path, index=review_id_col is None)
 print(f"\nThematic analysis saved to:\n{output_path}")

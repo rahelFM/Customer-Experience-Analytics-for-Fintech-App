@@ -1,4 +1,4 @@
-# Customer Experience Analytics for Ethiopian Fintech Apps
+# Customer Experience Analytics for Fintech App
 
 This project analyzes customer reviews from Google Play Store for three major Ethiopian banks' fintech apps: Commercial Bank of Ethiopia (CBE), Bank of Abyssinia (BOA), and Dashen Bank. The goal is to extract customer sentiment and recurring themes to help banks enhance their digital customer experience.
 

@@ -34,11 +34,6 @@ Customer-Experience-Analytics-for-Fintech-App/
 │
 └── README.md
 
-yaml
-Copy
-Edit
-
----
 
 ##  Models Used
 

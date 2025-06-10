@@ -1,98 +1,127 @@
-# Customer-Experience-Analytics-for-Fintech-App
+# Customer Experience Analytics for Ethiopian Fintech Apps
 
-This project is part of the Week 2 challenge from 10 Academy’s KAIM 5 & 6 program. The goal is to analyze customer reviews from Ethiopian fintech apps (starting with Dashen Bank's SuperApp), and extract insights on user sentiment and experience.
-
----
-
-## ✅ Project Objectives (Task 1)
-1. **Scrape** customer reviews from Google Play Store.
-2. **Clean** and preprocess the text.
-3. **Perform sentiment analysis** using both VADER and TextBlob.
-4. Save cleaned and analyzed reviews for further tasks.
+This project analyzes customer reviews from Google Play Store for three major Ethiopian banks' fintech apps: Commercial Bank of Ethiopia (CBE), Bank of Abyssinia (BOA), and Dashen Bank. The goal is to extract customer sentiment and recurring themes to help banks enhance their digital customer experience.
 
 ---
 
-## 🗂️ Project Structure
+##  Overview
+
+- **Sentiment Analysis**: Performed using TextBlob, VADER, and DistilBERT.
+- **Thematic Analysis**: Extracted keywords with TF-IDF and clustered into themes.
+- **Visualization**: Insights across banks, sentiment models, and themes.
+- **Outcome**: Identified satisfaction drivers and pain points per app.
+
+---
+
+##  Project Structure
 
 Customer-Experience-Analytics-for-Fintech-App/
-├── scraping/ # Scripts to collect data from Google Play
-│ └── play_store_scraper.py
-├── Preprocessing/ # Text cleaning scripts
-│ └── clean_reviews.py
-├── Sentiment/ # Sentiment analysis (VADER, TextBlob)
-│ └── sentiment_analysis.py
-├── data/ # Raw reviews from Google Play
-├── database/ # Cleaned and sentiment-annotated reviews
-├── requirements.txt
+│
+├── data/
+│ └── sentiment/
+│ ├── sentiment_analysis_textblob_vader.csv
+│ ├── sentiment_analysis_distilbert.csv
+│ └── thematic_analysis/
+│ ├── textblob_vader.csv
+│ └── distilbert_reviews_with_themes.csv
+│
+├── analysis/
+│ ├── Sentiment_analysis.py
+│ └── thematic_analysis.py
+│
+├── visualizations/
+│ └── generate_plots.py
+│
 └── README.md
 
-
-## 📌 Tools & Libraries
-
-- `google-play-scraper` – For scraping reviews
-- `pandas`, `numpy` – Data handling
-- `TextBlob`, `VADER` – Sentiment analysis
-- `regex`, `schedule`, `logging` – Automation and cleaning
+yaml
+Copy
+Edit
 
 ---
 
-## 🔄 Workflow Summary
+##  Models Used
 
-### 1. Scraping Dashen Super App Reviews
-We collected the latest 449 reviews from:
-- App ID: `com.dashen.dashensuperapp`
+- **TextBlob**: Rule-based, lexicon-driven.
+- **VADER**: Specialized for short social media text.
+- **DistilBERT**: Transformer-based model for contextual sentiment understanding.
 
-> Output: `data/Dashen_reviews_<timestamp>.csv`
+---
 
-### 2. Cleaning the Reviews
-We removed:
-- URLs
-- Special characters
-- Extra spaces
-- Converted to lowercase
+##  Themes
 
-> Output: `database/Dashen_reviews_cleaned.csv`
+Identified themes across all apps:
+1. **Account Access Issues**
+2. **Transaction Performance**
+3. **User Interface & Experience**
+4. **Customer Support**
+5. **Feature Requests**
 
-### 3. Sentiment Analysis
-We applied:
-- **TextBlob**: polarity-based
-- **VADER**: rule-based
+Keywords were grouped using TF-IDF and manually clustered.
 
-Each review now includes:
-- `textblob_score` and `textblob_sentiment`
-- `vader_score` and `vader_sentiment`
+---
 
-> Output: `database/Dashen_reviews_sentiment.csv`
+##  Key Findings
+
+- **DistilBERT outperforms** TextBlob and VADER in accurately detecting sentiment nuances.
+- Common positive keywords: "good", "fast", "easy", "super app"
+- Frequent complaints include: "login error", "crash", "slow update"
+
+---
+
+## Visualizations
+
+- Bar charts for sentiment distribution per model & bank
+- Theme-wise sentiment comparison
+- Model performance per identified theme
 
 
-## 📈 Next Steps
-- Perform **topic modeling** or **keyword-based clustering**
-- Create visual dashboards (bar charts, word clouds, etc.)
-- Expand to other Ethiopian fintech apps
 
-## 🚀 Run Locally
+## Setup Instructions
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/Customer-Experience-Analytics-for-Fintech-App.git
-   cd Customer-Experience-Analytics-for-Fintech-App
-Install dependencies:
+```bash
+# 1. Clone repository
+git clone https://github.com/your-username/Customer-Experience-Analytics-for-Fintech-App.git
+cd Customer-Experience-Analytics-for-Fintech-App
 
-bash
-Copy
-Edit
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 3. Install dependencies
 pip install -r requirements.txt
-Run the scripts:
+python -m spacy download en_core_web_sm
 
-bash
-Copy
-Edit
-python scraping/play_store_scraper.py
-python Preprocessing/clean_reviews.py
-python Sentiment/sentiment_analysis.py
+# 4. Run analysis
+python analysis/Sentiment_analysis.py
+python analysis/thematic_analysis.py
 
-Author
-Rahel Sileshi Abdisaa
+# 5. Visualize
+python visualizations/generate_plots.py
 
-10 Academy – KAIM 5 & 6 Program Week 2
+## Dependencies
+pandas
 
+matplotlib
+
+seaborn
+
+scikit-learn
+
+spacy
+
+transformers
+
+nltk
+
+vaderSentiment
+
+textblob
+
+## Authors
+Rahel (Lead Data Analyst)
+
+10 Academy Week 2 Project Team
+
+## License
+MIT License.
